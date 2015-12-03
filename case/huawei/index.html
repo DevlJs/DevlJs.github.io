@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="screen-orientation" content="portrait">
+  <!-- uc强制竖屏 -->
+  <meta name="x5-orientation" content="portrait">
+  <!-- QQ强制竖屏 -->
+  <title>想不想看看你另一面？</title>
+  <link rel="stylesheet" type="text/css" href="./css/jquery.fullPage.css" />
+  <link rel="stylesheet" type="text/css" href="./css/index.css">
+  <!-- iphone6 -->
+  <!-- <link rel="stylesheet/less" type="text/css" href="./css/iphone6.less" media="screen and (max-width: 375px)" /> -->
+
+  <!--Page Scripts Load -->
+  <script src="./js/jquery-1.9.1.min.js"></script>
+  <script src="./js/jquery.fullPage.min.js" type="text/javascript"></script>
+  <script src="./js/index.js" type="text/javascript"></script>
+  <script type="text/javascript" src="./js/jquery-serializejson.js"></script>
+  <script type="text/javascript" src="./js/buildAnim.js"></script>
+  <script src="./js/exif.js"></script>
+  <script src="./js/megapix-images.js" charset="utf-8"></script>
+  <script type="text/javascript" src="http://html2canvas.hertzen.com/build/html2canvas.js"></script>
+  <script src="./js/draggabilly.pkgd.min.js" charset="utf-8"></script>
+</head>
+<!-- anim-data="{'blur':['15px','0px'],'zoom':[0,1],'opacity':[0,1]}" delay-time="0.3" duration-time="1" anim-class="cls_13"
+  anim-data="{'slide-x':['-5%','5%'],'opacity':[0,1]}" delay-time="0.9" duration-time="1" anim-class="cls_13" -->
+
+<body id="mbody">
+  <audio id="music"  src="video/video.mp3"></audio>
+  <div class="content" id="dowebok">
+    <div class="section" id="indexPart">
+      <div class="watchPart">
+        <img src="./images/watch/font.png" class="font">
+        <img src="./images/watch/mes.png" class="mes">
+        <div class="name">陈小春</div>
+        <img src="./images/watch/16.png" class="watch" />
+        <img src="./images/watch/15.png" class="watch" />
+        <img src="./images/watch/14.png" class="watch" />
+        <img src="./images/watch/13.png" class="watch" />
+        <img src="./images/watch/12.png" class="watch" />
+        <img src="./images/watch/11.png" class="watch" />
+        <img src="./images/watch/10.png" class="watch" />
+        <img src="./images/watch/09.png" class="watch" />
+        <img src="./images/watch/08.png" class="watch" />
+        <img src="./images/watch/07.png" class="watch" />
+        <img src="./images/watch/06.png" class="watch" />
+        <img src="./images/watch/05.png" class="watch" />
+        <img src="./images/watch/04.png" class="watch" />
+        <img src="./images/watch/03.png" class="watch" />
+        <img src="./images/watch/02.png" class="watch" />
+        <img src="./images/watch/01.png" class="watch" />
+        <img src="./images/index/button.png" class="button">
+      </div>
+      <div id="drag-and-drop-zone" class="uploader" style="    position: absolute;
+    border: none;
+    z-index: 999;
+    top: 0;
+    height: 100%;
+    padding: 0;">
+        <div class="browser" style="height: 100%;">
+          <input type="file" name="files[]" accept="image/*" multiple="multiple" title="Click to add Images"  capture="camera"  class="inputFilebutton" />
+        </div>
+      </div>
+    </div>
+    <div class="section" id="choosePart">
+      <img src="./images/choose/titlefont.png" class="titlefont">
+      <div class="lujinPart">
+        <img src="./images/choose/keai.png" class="keai" data-bgsrc="keai">
+        <img src="./images/choose/chengwen.png" class="chengwen" data-bgsrc="chengwen">
+        <img src="./images/choose/miantian.png" class="miantian" data-bgsrc="miantian">
+        <img src="./images/choose/wenrou.png" class="wenrou" data-bgsrc="wenrou">
+        <img src="./images/choose/chuangtong.png" class="chuangtong" data-bgsrc="chuantong">
+      </div>
+    </div>
+    <div class="section" id="LvJing" style="z-index:999;  position: relative;">
+
+      <div id="preview" style="height:100%;">
+        <canvas id="photo" width="430" height="672" style="touch-action: none; -webkit-user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas>
+        <!-- 底图 -->
+        <div class="cover bgItm A fixedBg" style="background-image: url('./images/bg/keai.png');    position: absolute;  pointer-events: none;"></div>
+
+        <canvas id="mangerPhoto" width="430" height="672" style="touch-action: none; -webkit-user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas>
+      </div>
+      <img src="./images/button.png" class="confrimPhoto" id="saveImageBtn" onclick="confirmImage();">
+      <img src="./images/no.png" class="no">
+      <img src="./images/button.png" class="save">
+      <img src="./images/notice.png" class="notice">
+    </div>
+    <div class="section" id="formPart">
+      <img src="./images/share/share.png" class="share">
+      <div class="formDv">
+        <form id="reqFrom" subUrl="http://121.40.35.102:1808/api/Ln4tPySNA99CFoBq">
+          <img src="./images/form/title.png" class="title">
+          <input type="text" class="name" placeholder="姓名" name="name" required-rr="姓名不能为空" req-max="10" req-min="2">
+          <input type="text" class="tel" placeholder="电话" name="phone" required-rr="电话不能为空" reqMessage="电话格式不对" reqReg="^1\d{10}$">
+          <input type="hidden" name="city" value="">
+          <img src="./images/form/submit.png" class="submit">
+          <img src="./images/form/share.png" class="sharebtn">
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- 上传组件-->
+  <link rel="stylesheet" href="./css/upload.css" />
+  <link rel="stylesheet" href="http://7xojhs.com2.z0.glb.qiniucdn.com/uploaderdemo.css" />
+
+  <!--拖动-->
+  <script src="http://7xojhs.com2.z0.glb.qiniucdn.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="./js/demo-preview.min.js"></script>
+  <script type="text/javascript" src="http://7xojhs.com2.z0.glb.qiniucdn.com/dmuploader.min.js"></script>
+
+
+  <script src="http://7xilp5.com1.z0.glb.clouddn.com/femina/ckone/js/zepto.min.js"></script>
+  <script src="http://7xilp5.com1.z0.glb.clouddn.com/femina/ckone/js/hammer.min.js"></script>
+</body>
+
+</html>

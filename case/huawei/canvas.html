@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script type="text/javascript" src="./js/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="./js/html2canvas.js"></script>
+  <style type="text/css">
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 1024px;
+      margin: 0 auto;
+      position: relative;
+      text-align: center;
+    }
+
+    .content {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container" id="containertId">
+    <div class="content">
+
+      <canvas id="MyCanvas" width="700" height="550" style="background-color:blue;border: 10px yellow solid" ></canvas>
+      <canvas id="myCanvasTag" width="400" height="400" style="background-color:blue;border: 10px yellow solid"></canvas>
+      <div id="testId">
+        测试ID测试ID测试ID测试ID测试ID测试ID测试ID测试ID测试ID
+      </div>
+      <input type="button" name="name" value="测试Id">
+      <img src="" alt="" id="down_button">
+    </div>
+  </div>
+</body>
+
+</html>
+<script type="text/javascript">
+  $(function() {
+    var c = document.getElementById("MyCanvas");
+    var cxt = c.getContext("2d");
+    //draw backgroundimage
+    function drawbg() {
+      var bgimg = new Image();
+      bgimg.src = "./images/c825768c90ef269627df66df8ddda6a2.jpg";
+      cxt.drawImage(bgimg, 0, 0);
+    }
+    drawbg();
+    setInterval(drawbg, 200);
+  });
+
+  $("[type='button']").click(function() {
+    var elementId = $("#containertId");
+    html2canvas(elementId, {
+      onrendered: function(canvas) {
+        $('#down_button').attr('src', canvas.toDataURL());
+      }
+    });
+  });
+</script>

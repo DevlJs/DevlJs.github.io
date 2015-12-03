@@ -1,0 +1,402 @@
+@import "function.less";
+#newImg{
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: 0;
+  right: 0;
+  z-index: 999;
+}
+html {
+  height: 100%;
+  body {
+    font: 100% "Microsoft Yahei", verdana;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 0;
+    min-width: 300px;
+    max-width: 640px;
+    font-size: 18px;
+    height: 100%;
+    .fixedBg {
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+      -moz-background-size: 100% 100%;
+      background-size: 100% 100%;
+    }
+    .blockImg {
+      display: block;
+    }
+    .content {
+      height: 100%;
+      #indexPart {
+        margin: 0 auto;
+        .font {
+          position: absolute;
+          top: 280px;
+          width: 112px;
+          z-index: 12;
+          left: 50%;
+          margin-left: -56px;
+          .opacity(0);
+          .transform(translateY(110%));
+          .transition(1s);
+          &.ss {
+            .opacity(1);
+            .transform(translateY(0%));
+            .transition-delay(0.9s);
+          }
+        }
+        .name {
+          position: absolute;
+          top: 277px;
+          width: 112px;
+          z-index: 12;
+          left: 50%;
+          margin-left: -32px;
+          font-size: 1.8em;
+          .opacity(0);
+          .transform(translateY(110%));
+          .transition(1s);
+          color: #000;
+          &.ss {
+            .opacity(1);
+            .transform(translateY(0%));
+            .transition-delay(0.9s);
+          }
+        }
+        .mes {
+          position: absolute;
+          width: 40px;
+          top: 240px;
+          z-index: 112;
+          right: 80px;
+          .opacity(0);
+          .transform(translateY(410%));
+          .transition(1s);
+          &.ss {
+            .opacity(1);
+            .transform(translateY(0%));
+            .transition-delay(0.6s);
+          }
+        }
+        .watchPart {
+          width: 300px;
+          height: 100%;
+          position: relative;
+          margin: 0 auto;
+        }
+        .co {
+          width: 175px;
+          position: absolute;
+          text-align: center;
+          left: 50%;
+          margin-left: -87.5px;
+          top: 205px;
+          z-index: 11;
+          .opacity(0);
+          .transform(translateY(410%));
+          .transition();
+          &.ss {
+            .opacity(1);
+            .transform(translateY(0%));
+          }
+        }
+        .watch {
+          width: 250px;
+          position: absolute;
+          text-align: center;
+          left: 50%;
+          margin-left: -125px;
+          z-index: 10;
+          top: 7%;
+        }
+        .button {
+          height: 110px;
+          width: 110px;
+          position: absolute;
+          z-index: 11;
+          top: 470px;
+          left: 50%;
+          margin-left: -53px;
+          .transition(1s);
+          transform: translateY(100%);
+          .opacity(0);
+          z-index: 99;
+        }
+        .inputFilebutton {
+          height: 110px;
+          width: 110px;
+          position: absolute;
+          z-index: 11;
+          top: 470px;
+          left: 50%;
+          margin-left: -53px;
+          .transition();
+          .transform(translateY(0%));
+          .opacity(0);
+        }
+        .gobuttontDv {
+          width: 96px;
+          height: 96px;
+          position: absolute;
+          z-index: 12;
+          top: 470px;
+          left: 50%;
+          margin-left: -42px;
+          background: none;
+          .opacity(0);
+        }
+        &.active {
+          .button {
+            .transform(translateY(0%));
+            .transition-delay(3.6s);
+            .opacity(1);
+          }
+        }
+      }
+      #choosePart {
+        .titlefont {
+          width: 60%;
+          position: relative;
+          left: 50%;
+          margin-left: -30%;
+          margin-top: 10%;
+        }
+        .lujinPart {
+          position: absolute;
+          width: 90%;
+          margin: 0 auto;
+          height: 75%;
+          top: 14%;
+          .keai {
+            position: absolute;
+            width: 35%;
+            right: 7%;
+            .animation(anA ease 5.5s both infinite);
+          }
+          .chengwen {
+            position: absolute;
+            width: 40%;
+            left: 7%;
+            top: 10%;
+            .animation(anB ease 5.5s both infinite);
+          }
+          .miantian {
+            position: absolute;
+            width: 42%;
+            top: 30%;
+            right: 7%;
+            .animation(anA ease 6.5s both infinite);
+          }
+          .wenrou {
+            position: absolute;
+            width: 38%;
+            top: 45%;
+            left: 9%;
+            .animation(anA ease 7.5s both infinite);
+          }
+          .chuangtong {
+            position: absolute;
+            width: 33%;
+            right: 17%;
+            top: 68%;
+            .animation(anA ease 3.5s both infinite);
+          }
+        }
+      }
+      #formPart {
+        .sharebtn {
+          margin: 0 auto;
+          display: block;
+          width: 22%;
+          margin-top: 10%;
+        }
+        .share {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 100;
+          display: none;
+        }
+        .formDv {
+          width: 80%;
+          position: relative;
+          top: 20%;
+          margin: 0 auto;
+          text-align: center;
+          .title {
+            width: 100%;
+          }
+          input {
+            width: 195px;
+            margin: 0 auto;
+            margin-top: 10%;
+            display: block;
+            height: 44px;
+            background: none;
+            font-size: 3em;
+            padding: 0 10px;
+            outline: none;
+            color: #fff;
+            border: 2px solid #cdc290;
+            padding-bottom: 5px;
+          }
+          .submit {
+            margin: 0 auto;
+            display: block;
+            width: 22%;
+            margin-top: 16%;
+          }
+        }
+      }
+      #LvJing {
+        .saveImg{
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+        .confrimPhoto {
+          width: 15%;
+          position: absolute;
+          top: 2%;
+          left: 3%;
+        }
+        .no {
+          width: 15%;
+          position: absolute;
+          top: 13%;
+          left: 3%;
+        }
+        .notice{
+          width: 30%;
+          position: absolute;
+          bottom: 1.5%;
+          left: 50%;
+          margin-left: -15%;
+        }
+        .save{
+          width: 15%;
+          position: absolute;
+          top: 25%;
+          left: 3%;
+        }
+        .bgItm {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+/*动画*/
+@-webkit-keyframes anA {
+  0% {
+    .transform(translate(0%,0%));
+  }
+  20% {
+    .transform(translate(5%,5%));
+  }
+  40% {
+    .transform(translate(10%,10%);)
+  }
+  50% {
+    .transform(translate(10%,20%);)
+  }
+  60% {
+    .transform(translate(5%,20%);)
+  }
+  70% {
+    .transform(translate(0%,20%);)
+  }
+  80% {
+    .transform(translate(0%,20%);)
+  }
+  100% {
+    .transform(translate(0%,0%));
+  }
+}
+@keyframes anA {
+  0% {
+    .transform(translate(0%,0%));
+  }
+  20% {
+    .transform(translate(5%,5%));
+  }
+  40% {
+    .transform(translate(10%,10%);)
+  }
+  50% {
+    .transform(translate(10%,20%);)
+  }
+  60% {
+    .transform(translate(5%,20%);)
+  }
+  70% {
+    .transform(translate(0%,20%);)
+  }
+  80% {
+    .transform(translate(0%,20%);)
+  }
+  100% {
+    .transform(translate(0%,0%));
+  }
+}
+@keyframes anB {
+  0% {
+
+  }
+  10% {
+    .transform(translate(10%,3%));
+  }
+  30% {
+    .transform(translate(30%,10%));
+  }
+  60% {
+    .transform(translateX(25%,40%));
+  }
+  100% {
+    .transform(translateX(20%,3%);)
+  }
+}
+@-webkit-keyframes roateXuanZhuan {
+  0% {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes roateXuanZhuan {
+  0% {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
