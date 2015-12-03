@@ -109,6 +109,7 @@ $(document).ready(function() {
     var src = $(this).attr("data-bgsrc");
     $(".cover").css("background-image", "url('./images/bg/" + src + ".png')");
     changeLockState();
+    $("#photo").fadeIn();
   });
   $("#LvJing .confrimPhoto").click(function() {
     changeLockState();
@@ -125,6 +126,7 @@ $(document).ready(function() {
   });
 
   $(".save").click(function() {
+    $(".notice").show();
     html2canvas($("#preview"), {
       allowTaint: true,
       taintTest: false,
