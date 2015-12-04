@@ -219,100 +219,6 @@ function reSetCss() {
   }, 100);
 }
 
-
-// (function($) {
-//   $.extend({
-//     "dragImg": function() {
-//       var v = 0,
-//         w = 430,
-//         x = 672,
-//         p = false,
-//         k = 0,
-//         l = undefined,
-//         g = true,
-//         b = 672,
-//         c = 1.4883720930232558,
-//         d = undefined,
-//         D = null,
-//         P = 430,
-//         y = new Image,
-//         S = {};
-//       var mangerPhoto = document.getElementById("mangerPhoto");
-//       var Bctx = mangerPhoto.getContext("2d");
-//       var cImg = new Image();
-//       cImg.src = User.avatar;
-//       Bctx.drawImage(cImg, 10, 10, 430, 627);
-//       //y.src = mangerPhoto.toDataURL("image/jpeg", 0.8);
-//
-//
-//       y.onload = function() {
-//         //v = k = 0, P = this.naturalWidth, x = this.naturalHeight, P / x > 430 / 672 && (w = Math.ceil(672 * P / x), v = (430 - w) / 2), b = w * x / P, s()
-//
-//         var canvas = document.createElement("canvas");
-//
-//         var ctx = canvas.getContext("2d");
-//         ctx.drawImage(this, 0, 0, w, x);
-//
-//         var base64 = null;
-//         var mpImg = new MegaPixImage(y);
-//         mpImg.render(canvas, {
-//           maxWidth: w,
-//           maxHeight: x,
-//           quality: 0.8,
-//           orientation: User.Orientation
-//         });
-//         $(canvas).attr("id", "photo");
-//         $(canvas).attr("src", User.avatar);
-//         $(canvas).attr("style", "touch-action: none; -webkit-user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);");
-//         $("#photo").remove();
-//         $("#preview").append(canvas);
-//         var imgM = new Hammer.Manager(canvas);
-//         imgM.add(new Hammer.Pan),
-//         imgM.add(new Hammer.Pinch),
-//         imgM.on("panstart", function(a) {
-//           S = {
-//             x: v,
-//             y: k
-//           }
-//         }).on("panmove", function(a) {
-//           v = S.x + a.deltaX,
-//           k = S.y + a.deltaY,
-//           s()
-//         }).on("pinchstart", function(a) {
-//           _ = {
-//             width: w,
-//             height: b
-//           },
-//           S = {
-//             x: v,
-//             y: k
-//           }
-//         }).on("pinchmove", function(a) {
-//           w = Math.max(430, _.width * a.scale),
-//           b = w * x / P,
-//           v = S.x + (_.width - w) / 3,
-//           k = S.y + (_.height - b) / 2,
-//           s();
-//         });
-//
-//
-//         function s() {
-//           //ctx.fillRect(0, 0, 430, 672),
-//           ctx.drawImage(y, 0, 0, P, x, k, v, w, b)
-//         //	T.drawImage(y, 0, 0, P, x, v, k, w, b)
-//         }
-//         base64 = canvas.toDataURL("image/jpeg", 0.8);
-//         console.log(base64);
-//         $("#newImg").attr("src", base64);
-//         $("#newImg").width(w);
-//         $("#newImg").width(x);
-//       };
-//     //y.onload();
-//     }
-//   });
-// }($));
-//
-//
 (function($) {
   $.extend({
     "dragImg": function() {
@@ -329,12 +235,33 @@ function reSetCss() {
         D = null,
         P = 430,
         y = new Image,
-        S = {};
+        S = {},
+        newImg = new Image;
       y.src = User.avatar;
 
       y.onload = function() {
-        v = k = 0, P = this.naturalWidth, x = this.naturalHeight, P / x > 430 / 672 && (w = Math.ceil(572 * P / x), v = (430 - w) / 2), b = w * x / P, s()
+        v = k = 0, P = this.naturalWidth, x = this.naturalHeight, P / x > 430 / 672 && (w = Math.ceil(572 * P / x), v = (430 - w) / 2), b = w * x / P;
+        var canvas = document.createElement("canvas");
+        var ctx = canvas.getContext("2d");
+        canvas.width = 430;
+        canvas.height = 672;
+        ctx.drawImage(this, 0, 0, 430, 672);
+        //alert(canvas.width + ',' + canvas.height);
 
+        var base64 = null;
+        var mpImg = new MegaPixImage(y);
+        mpImg.render(canvas, {
+          maxWidth: 430,
+          maxHeight: 672,
+          quality: 0.8,
+          orientation: User.Orientation
+        });
+
+        base64 = canvas.toDataURL("image/jpeg", 0.8);
+
+        //uploadImage(base64);
+        newImg.src = base64;
+        s();
       //旋转
       //Img.rotate("photo", 90);
       };
@@ -378,8 +305,10 @@ function reSetCss() {
       });
 
       function s() {
-        T.fillRect(0, 0, 430, 672),
-        T.drawImage(y, 0, 0, P, x, v, k, w, b)
+        if (newImg) {
+          T.fillRect(0, 0, 430, 672),
+          T.drawImage(newImg, 0, 0, P, x, v, k, w, b)
+        }
       }
     }
   });
