@@ -50,7 +50,10 @@ function confirmImage(event) {
 }
 
 $(document).ready(function() {
-  $("#div_loading").fadeOut();
+  window.setTimeout(function() {
+
+    $("#div_loading").fadeOut();
+  }, 8000);
   intervalId = window.setInterval(function() {
     watchShow();
   }, 150);
