@@ -247,7 +247,7 @@ function reSetCss() {
         canvas.height = 672;
         ctx.drawImage(this, 0, 0, 430, 672);
         //alert(canvas.width + ',' + canvas.height);
-
+        alert(User.Orientation);
         var base64 = null;
         var mpImg = new MegaPixImage(y);
         mpImg.render(canvas, {
